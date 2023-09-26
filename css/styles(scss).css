@@ -1,0 +1,569 @@
+@import url("https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css");
+/* ### Header ### */
+/* 
+.header.search_active.scroll_down .header_scroll {
+  transform: none;
+} */
+@keyframes show_drop {
+  0% {
+    display: none;
+    transform: translate(0, -50%);
+    opacity: 0%;
+  }
+  50% {
+    transform: translate(0, -25%);
+    opacity: 50%;
+  }
+  100% {
+    display: block;
+    transform: translate(0, 0);
+    opacity: 100%;
+  }
+}
+/* ### CONTAINER ### */
+* {
+  font-family: "NanumSquareNeo";
+}
+
+body {
+  height: 300vh;
+}
+
+.inner {
+  max-width: 1840px;
+  margin: 0 auto;
+  padding-right: 120px;
+  padding-left: 120px;
+  box-sizing: border-box;
+}
+
+.blind {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  border: 0;
+  outline: none;
+  outline: 0;
+  background: none;
+  font: inherit;
+  background-color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+input {
+  padding: 0;
+  border: none;
+  border: 0;
+  outline: none;
+  outline: 0;
+  background: none;
+  font: inherit;
+  background-color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.ghost {
+  height: 110px;
+  display: none;
+  position: relative;
+  top: 0;
+}
+.ghost.active {
+  display: block;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 200;
+  height: 110px;
+  background-color: #fff;
+}
+.header .inner {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .header_scroll {
+  z-index: 100;
+  width: 100%;
+  background-color: white;
+  transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+  padding: 31px 0 30px;
+}
+.header .header_scroll .inner .logo a {
+  display: flex;
+  align-items: center;
+}
+.header .header_scroll .inner .logo .logo_video {
+  width: 48px;
+  height: 48px;
+}
+.header .header_scroll .inner .logo .logo_title {
+  margin-left: 15px;
+  width: 156px;
+  height: 48px;
+  display: block;
+  background-image: url("../images/sprite.png");
+  background-size: 325px 130px;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+.header .header_scroll .inner .open_search_button {
+  background-position: -158px -34px;
+  background-repeat: no-repeat;
+  background-size: 325px 130px;
+  width: 46px;
+  height: 46px;
+  background-image: url(../images/sprite.png);
+  cursor: pointer;
+}
+.header .header_scroll .inner .search_close_button {
+  display: none;
+  background-size: 325px 130px;
+  background-position: -206px -34px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/sprite.png);
+  cursor: pointer;
+}
+.header .search_box {
+  position: fixed;
+  height: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.header .search_box .inner {
+  width: 100%;
+  align-items: center;
+  flex-flow: column;
+}
+.header .search_box .inner .category_box {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  height: 110px;
+  display: block;
+  max-width: 866px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 90px;
+  padding: 0;
+}
+.header .search_box .inner .category_box li > a {
+  padding: 10px 18px 9px;
+  max-width: 135px;
+  line-height: 1;
+  padding: 14px 31px 15px;
+  font-size: 18px;
+  color: #000;
+  border-radius: 23px;
+  border: 1px solid #dedede;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "NanumSquareNeo";
+}
+
+.header.search_active {
+  position: fixed;
+}
+.header.search_active .header_scroll {
+  position: fixed;
+  top: 0;
+}
+.header.search_active .header_scroll .open_search_button {
+  display: none;
+}
+.header.search_active .header_scroll .inner .search_close_button {
+  display: block;
+}
+.header.search_active .search_box {
+  padding-top: 110px;
+  height: 500px;
+}
+
+.search_box .inner {
+  flex-flow: column;
+}
+.search_box .inner .search_content .go_search_button {
+  background-image: url("../images/sprite.png");
+  background-size: 325px 130px;
+  background-position: -158px -34px;
+  background-repeat: no-repeat;
+  width: 46px;
+  height: 46px;
+}
+.search_box .search_content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 71px;
+  font-size: 32px;
+  letter-spacing: -0.32px;
+  line-height: 64px;
+  font-weight: 800;
+  border-bottom: 1px solid #000;
+}
+.search_box .search_content input {
+  width: 100%;
+  padding: 6px 0px 11px;
+}
+
+.section_spot_list .inner {
+  display: flex;
+  gap: 50px;
+}
+
+.header-scroll .inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.show_drop {
+  animation: show_drop 0.3s forwards;
+}
+
+.search_content input::-moz-placeholder {
+  color: rgb(190, 190, 190);
+  font-size: 32px;
+}
+
+.search_content input::placeholder {
+  color: rgb(190, 190, 190);
+  font-size: 32px;
+}
+
+.flicking-viewport {
+  position: relative;
+}
+
+.thum_box video {
+  width: 100%;
+  height: 680px;
+}
+
+.panel {
+  padding-bottom: 50px;
+}
+.panel a strong {
+  display: block;
+  margin-top: 42px;
+  font-size: 46px;
+  line-height: 66px;
+  font-weight: 800;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.flicking-pagination {
+  position: absolute;
+  bottom: 0;
+  text-align: left;
+}
+.flicking-pagination .flicking-pagination-bullet {
+  width: 80px;
+  height: 8px;
+  display: inline-block;
+  background-color: #e3e3e3;
+  margin: 0 4px;
+}
+.flicking-pagination .flicking-pagination-bullet-active {
+  background-color: black;
+}
+
+.section_content_list .inner .content_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.section_content_list .inner .content_list .item {
+  flex-basis: calc(33.3334% - 40px);
+  margin-top: 150px;
+}
+.section_content_list .inner .content_list .item .link .thum_box {
+  width: 100%;
+  overflow: hidden;
+}
+.section_content_list .inner .content_list .item .link .thum_box video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.section_content_list .inner .content_list .item .link .thum_box img {
+  width: 100%;
+}
+.section_content_list .inner .content_list .item .link .text_box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+}
+.section_content_list .inner .content_list .item .link .text_box .content_title {
+  font-size: 38px;
+  line-height: 1.33;
+  font-weight: 800;
+  font-family: "NanumSquareNeo";
+}
+.section_content_list .inner .content_list .item .link .text_box .content_subtitle {
+  margin-top: 0.625vw;
+  font-size: 22px;
+  line-height: 1.47;
+}
+.section_content_list .inner .content_list .item .link .text_box .date {
+  font-size: 18px;
+  margin-top: 1vw;
+  color: #aaa;
+}
+.section_content_list .inner .content_list .item .category_box {
+  display: flex;
+  margin-top: 30px;
+  gap: 0.625vw;
+}
+.section_content_list .inner .content_list .item .category_box li a {
+  border: 1px solid #707070;
+  color: #707070;
+  padding: 7px 15px;
+  border-radius: 0.90278vw;
+  font-size: 16px;
+  font-family: "NanumSquareNeo";
+}
+.section_content_list .inner .btn_box {
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+.section_content_list .inner .btn_box .btn_more {
+  background: url(https://campaign-cdn.pstatic.net/0/campaign/2023/05/channeltech/img/more_btn_text.png) center no-repeat;
+  background-size: 110px 21px;
+  width: 170px;
+  height: 55px;
+  border: 1px solid #000;
+  border-radius: 29px;
+  box-sizing: border-box;
+}
+.section_content_list .inner .btn_box .btn_more:hover {
+  background: url(https://campaign-cdn.pstatic.net/0/campaign/2023/05/channeltech/img/more_btn_text_w.png) center no-repeat;
+  background-size: 110px 21px;
+  background-color: #000;
+  background-image: white;
+}
+
+.section_keywords {
+  margin-top: 170px;
+  padding: 140px 0 96px;
+  background-color: #fafafa;
+}
+.section_keywords .inner .section_title {
+  font-size: 58px;
+  font-family: "NanumSquareNeo";
+  font-weight: 800;
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list .item {
+  flex-basis: 23%;
+  box-sizing: border-box;
+  margin-top: 50px;
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list .item .link .text_box {
+  padding: 2.29167vw 1.04167vw;
+  display: flex;
+  flex-direction: column;
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list .item .link .text_box strong {
+  font-size: 32px;
+  font-family: "NanumSquareNeo";
+  font-weight: 800;
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list .item .link .text_box .num {
+  font-family: "NanumSquareNeo";
+  font-size: 19px;
+  margin-top: 10px;
+  position: relative;
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list .item .link .text_box .num::after {
+  content: "";
+  position: absolute;
+  background-image: url(../images/sprite2.png);
+  background-size: 164px 142px;
+  background-position: -146px -20px;
+  background-repeat: no-repeat;
+  width: 13px;
+  height: 12px;
+  transform: translateX(5px) translateY(3px);
+}
+.section_keywords .inner .swiper_keywords .keywords_content_list .item .link .thum_box img {
+  width: 100%;
+}
+.section_keywords .btn_box {
+  width: 100%;
+  text-align: center;
+  margin-top: 130px;
+}
+.section_keywords .btn_box .btn_more {
+  background: url(https://campaign-cdn.pstatic.net/0/campaign/2023/05/channeltech/img/view_btn_text.png) center no-repeat;
+  background-size: 110px 21px;
+  width: 185px;
+  height: 60px;
+  border: 1px solid #000;
+  border-radius: 29px;
+  box-sizing: border-box;
+}
+.section_keywords .btn_box .btn_more:hover {
+  background: url(https://campaign-cdn.pstatic.net/0/campaign/2023/05/channeltech/img/view_btn_text_w.png) center no-repeat;
+  background-size: 110px 21px;
+  background-color: #000;
+  background-image: white;
+}
+
+.footer {
+  width: 100%;
+  height: 80px;
+  padding: 80px 0;
+  background-color: #000;
+}
+.footer .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer .inner .footer_company a {
+  background-image: url(../images/sprite.png);
+  background-size: 325px 130px;
+  display: block;
+  background-position: -158px 0px;
+  background-repeat: no-repeat;
+  width: 167px;
+  height: 32px;
+}
+.footer .inner .footer_company .footer_info {
+  margin-top: 30px;
+  display: flex;
+  position: relative;
+}
+.footer .inner .footer_company .footer_info a {
+  flex-basis: 50%;
+  font-size: 16px;
+  background: none;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  color: #aaa;
+  line-height: 1;
+  position: relative;
+  font-family: "NanumSquareNeo";
+}
+.footer .inner .footer_company .footer_info a::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 0;
+  height: 16px;
+  border-right: 1px solid #aaa;
+}
+.footer .inner .footer_company .footer_info span {
+  font-size: 16px;
+  color: #aaa;
+  font-family: "NanumSquareNeo";
+}
+.footer .inner .relate_site {
+  width: 400px;
+  height: 31px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.footer .inner .relate_site.active .site_now {
+  background-color: #292929;
+  padding: 14px 30px;
+  border-bottom: 1px solid #292929;
+}
+.footer .inner .relate_site.active .site_now::after {
+  right: 30px;
+  transform: rotate(180deg);
+}
+.footer .inner .relate_site.active .site_list {
+  display: block;
+}
+.footer .inner .relate_site .site_now {
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+  padding: 15px 0;
+  color: #aaa;
+  line-height: 31px;
+  font-size: 23px;
+  border-bottom: 1px solid #aaa;
+  font-family: "NanumSquareNeo";
+  position: relative;
+}
+.footer .inner .relate_site .site_now::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: calc(50% - 12px);
+  background-size: 325px 130px;
+  background-position: -158px -82px;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/sprite.png");
+}
+.footer .inner .relate_site .site_list {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  width: 100%;
+  background-color: #292929;
+  display: none;
+}
+.footer .inner .relate_site .site_list .site_wrap {
+  font-family: "NanumSquareNeo";
+}
+.footer .inner .relate_site .site_list .site_wrap li {
+  display: block;
+  padding: 14px 30px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.footer .inner .relate_site .site_list .site_wrap li a {
+  color: #fafafa;
+}/*# sourceMappingURL=styles(scss).css.map */
